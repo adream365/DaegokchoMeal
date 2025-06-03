@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.date-info {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.menu-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#menu-list {
+    list-style: none;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border: none !important;
+    background-color: #f8f9fa;
+    margin-bottom: 0.5rem;
+    border-radius: 10px !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.menu-item::before {
+    content: "🍴";
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.loading {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+.error-message {
+    background-color: #fff3f3;
+    color: #dc3545;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* 애니메이션 효과 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-item {
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: calc(var(--index) * 0.1s);
+    opacity: 0;
+}
+
+/* 반응형 디자인 개선 */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .card {
+        border-radius: 10px;
+    }
+    
+    .menu-item {
+        padding: 0.8rem 1rem;
+    }
+}
+
+.date-selector {
+    margin-bottom: 2rem;
+}
+
+.date-picker-container {
+    min-width: 200px;
+}
+
+#datePicker {
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+#datePicker:hover, #datePicker:focus {
+    border-color: var(--bs-primary);
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.btn-outline-primary:hover {
+    transform: scale(1.05);
+}
+
+.btn-outline-primary, .btn-primary {
+    transition: all 0.2s;
+}
+
+/* 모바일 반응형 스타일 */
+@media (max-width: 576px) {
+    .date-picker-container {
+        min-width: 150px;
+    }
+
+    #datePicker {
+        font-size: 1rem;
+        padding: 0.4rem;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+    }
+}
