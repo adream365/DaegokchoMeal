@@ -7,7 +7,7 @@
 body {
     font-family: 'Noto Sans KR', sans-serif;
     min-height: 100vh;
-    background-color: #f5f5f5;
+    background: #f6fff2;
     color: #333;
     line-height: 1.6;
 }
@@ -16,9 +16,23 @@ body {
     max-width: 800px;
     margin: 2rem auto;
     padding: 2rem;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(120, 200, 120, 0.10), 0 1.5px 6px rgba(120, 200, 120, 0.08);
+}
+
+.card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #eaffea;
+    box-shadow: 0 4px 24px rgba(120, 200, 120, 0.10), 0 1.5px 6px rgba(120, 200, 120, 0.08);
+}
+
+.card-body {
+    background: #f6fff2;
+    border-radius: 18px;
+    padding: 2rem 1.5rem;
 }
 
 h1 {
@@ -26,6 +40,8 @@ h1 {
     color: #2c3e50;
     margin-bottom: 1.5rem;
     font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -1px;
 }
 
 .date-info {
@@ -44,12 +60,6 @@ h1 {
     font-size: 1.25rem;
 }
 
-.card {
-    border: none;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
 .menu-container {
     max-width: 600px;
     margin: 0 auto;
@@ -64,15 +74,21 @@ h1 {
     align-items: center;
     padding: 1rem 1.5rem;
     border: none !important;
-    background-color: #f8f9fa;
+    background: #f6fff2;
     margin-bottom: 0.5rem;
-    border-radius: 10px !important;
-    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 12px !important;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #2c3e50;
+    box-shadow: 0 2px 8px rgba(120, 200, 120, 0.08);
 }
 
 .menu-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 16px rgba(120, 200, 120, 0.13);
+    background: #d6f5d6;
+    color: #388e3c;
 }
 
 .menu-item::before {
@@ -88,12 +104,21 @@ h1 {
 }
 
 .error-message {
-    background-color: #fff3f3;
-    color: #dc3545;
+    background: #c8e6c9;
+    color: #388e3c;
     padding: 1rem;
     border-radius: 10px;
     text-align: center;
     margin-top: 1rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(120, 200, 120, 0.10);
+}
+
+footer {
+    margin-top: 2rem;
+    color: #5cb85c;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 /* 애니메이션 효과 */
@@ -121,11 +146,14 @@ h1 {
     }
     
     .card {
-        border-radius: 10px;
+        border-radius: 12px;
     }
     
     .menu-item {
         padding: 0.8rem 1rem;
+    }
+    .card-body {
+        padding: 1.2rem 0.5rem;
     }
 }
 
@@ -140,39 +168,76 @@ h1 {
 #datePicker {
     font-size: 1.1rem;
     padding: 0.5rem;
-    border: 2px solid #e9ecef;
+    border: 2px solid #8fd694;
     border-radius: 8px;
     text-align: center;
     cursor: pointer;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: #eaffea;
+    color: #2c3e50;
+    font-weight: 500;
 }
 
 #datePicker:hover, #datePicker:focus {
-    border-color: var(--bs-primary);
+    border-color: #5cb85c;
     outline: none;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 0.18rem rgba(92, 184, 92, 0.15);
 }
 
-.btn-outline-primary:hover {
-    transform: scale(1.05);
+.btn-outline-primary {
+    border-color: #8fd694;
+    color: #5cb85c;
+    background: #fff;
 }
 
-.btn-outline-primary, .btn-primary {
-    transition: all 0.2s;
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+    background: #8fd694;
+    color: #fff;
+    border-color: #5cb85c;
+    transform: scale(1.07);
+}
+
+.btn-primary {
+    background: #5cb85c;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(120, 200, 120, 0.10);
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background: #388e3c;
+    color: #fff;
 }
 
 /* 모바일 반응형 스타일 */
 @media (max-width: 576px) {
     .date-picker-container {
-        min-width: 150px;
+        min-width: 120px;
     }
-
     #datePicker {
         font-size: 1rem;
         padding: 0.4rem;
     }
-
     .btn {
         padding: 0.4rem 0.8rem;
     }
+    h1 {
+        font-size: 1.2rem;
+    }
+    .schedule-img {
+        max-width: 100%;
+        border-radius: 8px;
+        border-width: 1px;
+    }
+}
+
+.schedule-img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(120, 200, 120, 0.13);
+    border: 2px solid #eaffea;
+    margin-top: 1rem;
 }
