@@ -151,6 +151,7 @@ footer {
     
     .menu-item {
         padding: 0.8rem 1rem;
+        font-size: 0.95rem;
     }
     .card-body {
         padding: 1.2rem 0.5rem;
@@ -224,12 +225,15 @@ footer {
         padding: 0.4rem 0.8rem;
     }
     h1 {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
+    }
+    .menu-item {
+        font-size: 0.85rem;
+        padding: 0.7rem 0.7rem;
     }
     .schedule-img {
         max-width: 100%;
-        border-radius: 8px;
-        border-width: 1px;
+        margin-top: 0.5rem;
     }
 }
 

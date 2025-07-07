@@ -19,7 +19,7 @@
                 <div class="text-center mb-4">
                     <h1 class="display-6 mb-3">서울대곡초등학교 급식 메뉴</h1>
                     <div class="date-selector mb-3">
-                        <div class="d-flex justify-content-center align-items-center gap-3">
+                        <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
                             <button class="btn btn-outline-primary" onclick="changeDate(-1)">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
@@ -30,10 +30,10 @@
                             <button class="btn btn-outline-primary" onclick="changeDate(1)">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
+                            <button class="btn btn-primary ms-2 mt-0" onclick="goToToday()">
+                                <i class="fas fa-calendar-day"></i> 오늘
+                            </button>
                         </div>
-                        <button class="btn btn-primary mt-3" onclick="goToToday()">
-                            <i class="fas fa-calendar-day"></i> 오늘
-                        </button>
                     </div>
                 </div>
                 
