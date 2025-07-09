@@ -238,10 +238,29 @@ footer {
 }
 
 .schedule-img {
-    max-width: 50%;
+    max-width: 70%;
     height: auto;
     border-radius: 16px;
     box-shadow: 0 4px 24px rgba(120, 200, 120, 0.13);
     border: 2px solid #eaffea;
     margin-top: 1rem;
+}
+
+.library-link {
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #20732d;
+    background: #b6e2b6;
+    padding: 0.5em 1.2em;
+    border-radius: 1.5em;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(120, 200, 120, 0.08);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.library-link:hover, .library-link:focus {
+    background: #a0d6a0;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(32, 115, 45, 0.18);
+    text-decoration: none;
 }
