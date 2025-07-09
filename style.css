@@ -235,16 +235,27 @@ footer {
         max-width: 100%;
         margin-top: 0.5rem;
     }
-    .library-link {
+    a.library-link,
+    a.library-link:link,
+    a.library-link:visited,
+    a.library-link:active,
+    a.library-link:focus {
         display: inline-block !important;
-        font-size: 1rem;
-        font-weight: 700;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
         color: #20732d !important;
         background: #b6e2b6 !important;
-        padding: 0.5em 1.2em;
-        border-radius: 1.5em;
-        text-decoration: none;
-        box-shadow: 0 2px 8px rgba(120, 200, 120, 0.08);
+        padding: 0.5em 1.2em !important;
+        border-radius: 1.5em !important;
+        text-decoration: none !important;
+        box-shadow: 0 2px 8px rgba(120, 200, 120, 0.08) !important;
+    }
+    a.library-link:hover,
+    a.library-link:focus {
+        background: #a0d6a0 !important;
+        color: #fff !important;
+        box-shadow: 0 4px 16px rgba(32, 115, 45, 0.18) !important;
+        text-decoration: none !important;
     }
 }
 
@@ -257,21 +268,26 @@ footer {
     margin-top: 1rem;
 }
 
-.library-link {
+a.library-link,
+a.library-link:link,
+a.library-link:visited,
+a.library-link:active,
+a.library-link:focus {
     display: inline-block !important;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
     color: #20732d !important;
     background: #b6e2b6 !important;
-    padding: 0.5em 1.2em;
-    border-radius: 1.5em;
-    text-decoration: none;
-    box-shadow: 0 2px 8px rgba(120, 200, 120, 0.08);
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    padding: 0.5em 1.2em !important;
+    border-radius: 1.5em !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 8px rgba(120, 200, 120, 0.08) !important;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s !important;
 }
-.library-link:hover, .library-link:focus {
+a.library-link:hover,
+a.library-link:focus {
     background: #a0d6a0 !important;
     color: #fff !important;
-    box-shadow: 0 4px 16px rgba(32, 115, 45, 0.18);
-    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(32, 115, 45, 0.18) !important;
+    text-decoration: none !important;
 }
