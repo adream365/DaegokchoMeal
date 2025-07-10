@@ -44,6 +44,21 @@ h1 {
     letter-spacing: -1px;
 }
 
+.display-6.mb-3 {
+    font-size: 2.025rem;
+    font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    color: #388e3c;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+}
+@media (max-width: 576px) {
+    .display-6.mb-3 {
+        font-size: 1.575rem;
+    }
+}
+
 .date-info {
     text-align: center;
     margin-bottom: 2rem;
