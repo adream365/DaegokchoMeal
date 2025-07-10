@@ -101,7 +101,7 @@ function displayMenu(menuItems) {
         const menuItem = document.createElement('div');
         menuItem.className = 'menu-item list-group-item';
         menuItem.style.setProperty('--index', index);
-        menuItem.textContent = item;
+        menuItem.innerHTML = `<img src="Picture/양파로고2.png" class="menu-icon" alt="onion icon" /> ${item}`;
         menuList.appendChild(menuItem);
     });
 }

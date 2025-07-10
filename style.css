@@ -91,12 +91,6 @@ h1 {
     color: #388e3c;
 }
 
-.menu-item::before {
-    content: "🍴";
-    margin-right: 1rem;
-    font-size: 1.2rem;
-}
-
 .loading {
     text-align: center;
     color: #666;
@@ -290,4 +284,44 @@ a.library-link:focus {
     color: #fff !important;
     box-shadow: 0 4px 16px rgba(32, 115, 45, 0.18) !important;
     text-decoration: none !important;
+}
+
+.logo-area {
+    margin-top: 1.2rem;
+    margin-left: 1.2rem;
+}
+.site-logo {
+    height: 48px;
+    width: auto;
+    display: block;
+}
+
+.card-with-logo {
+    position: relative;
+}
+.corner-logo {
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    height: 120px;
+    width: auto;
+    z-index: 10;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(120,200,120,0.08);
+}
+@media (max-width: 576px) {
+    .corner-logo {
+        top: 0.5rem;
+        left: 0.5rem;
+        height: 76px;
+    }
+}
+
+.menu-icon {
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    margin-right: 0.5em;
+    display: inline-block;
 }
