@@ -28,7 +28,7 @@
                             </button>
                             <div class="date-picker-container">
                                 <input type="date" id="datePicker" class="form-control text-center">
-                                <p id="current-date" class="text-muted fs-5 mt-2"></p>
+                                
                             </div>
                             <button class="btn btn-outline-primary" onclick="changeDate(1)">
                                 <i class="fas fa-chevron-right"></i>
@@ -56,6 +56,63 @@
         
         <div class="text-center my-3">
             <a href="https://library.gangnam.go.kr/dchlib/index.do" target="_blank" rel="noopener noreferrer" class="library-link">대치도서관(위치:은마아파트상가2층) : 열람실 자리 맡을때 로그인 용, 도서예약 용</a>
+        </div>
+        <div class="info-table-wrap">
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>매장명</th>
+                        <th>휴무</th>
+                        <th>이번주 일요일</th>
+                        <th>영업시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <script>
+                    // 이번주 일요일 날짜 구하기
+                    const today = new Date();
+                    const sunday = new Date(today);
+                    sunday.setDate(today.getDate() + (7 - today.getDay()) % 7);
+                    // 이번달 몇번째 일요일인지 계산
+                    const sundayDate = sunday.getDate();
+                    const sundayWeek = Math.ceil(sundayDate / 7);
+                    // 각 매장별 휴무 조건
+                    function getSundayStatus(holidayRule) {
+                        if (!holidayRule) return '영업';
+                        if (holidayRule.includes('2,4번째')) {
+                            return (sundayWeek === 2 || sundayWeek === 4) ? '휴무' : '영업';
+                        }
+                        return '영업';
+                    }
+                    document.write(`
+                    <tr>
+                        <td>에브리데이(은마아파트)</td>
+                        <td>2,4번째 일요일 휴무</td>
+                        <td>${getSundayStatus('2,4번째 일요일 휴무')}</td>
+                        <td>10:00~23:00</td>
+                    </tr>
+                    <tr>
+                        <td>은마상가</td>
+                        <td>2,4번째 일요일 휴무</td>
+                        <td>${getSundayStatus('2,4번째 일요일 휴무')}</td>
+                        <td>대략 8:00~22:00</td>
+                    </tr>
+                    <tr>
+                        <td>농협하나로마트(미도아파트)</td>
+                        <td></td>
+                        <td>영업</td>
+                        <td>8:30~21:00</td>
+                    </tr>
+                    <tr>
+                        <td>이마트(역삼정)</td>
+                        <td>2,4번째 일요일 휴무</td>
+                        <td>${getSundayStatus('2,4번째 일요일 휴무')}</td>
+                        <td>10:00~23:00</td>
+                    </tr>
+                    `);
+                    </script>
+                </tbody>
+            </table>
         </div>
         <div class="text-center mt-5 mb-3">
             <img src="Picture/2025학년도 학사 일정.jpg" alt="2025학년도 학사일정" class="img-fluid schedule-img">

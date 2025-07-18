@@ -3,6 +3,10 @@ let selectedDate = new Date();
 
 // 날짜 표시 업데이트
 function updateDateDisplay() {
+    // 날짜가 유효하지 않으면 오늘로 대체
+    if (!(selectedDate instanceof Date) || isNaN(selectedDate.getTime())) {
+        selectedDate = new Date();
+    }
     const options = { 
         year: 'numeric', 
         month: 'long', 
@@ -10,11 +14,15 @@ function updateDateDisplay() {
         weekday: 'long'
     };
     const dateStr = selectedDate.toLocaleDateString('ko-KR', options);
-    document.getElementById('current-date').textContent = dateStr;
+    // 한글 날짜 표시 요소가 있을 때만 값 변경
+    const dateElem = document.getElementById('current-date');
+    if (dateElem) dateElem.textContent = dateStr;
     
     // date input 업데이트
     const dateInput = document.getElementById('datePicker');
-    dateInput.value = formatDateForInput(selectedDate);
+    if (dateInput) {
+        dateInput.value = formatDateForInput(selectedDate);
+    }
 }
 
 // YYYY-MM-DD 형식으로 날짜 변환 (input type="date"용)
@@ -62,13 +70,12 @@ async function fetchMealInfo(date) {
     try {
         const response = await fetch(url);
         const data = await response.json();
-
-        if (data.RESULT) {
-            return []; // 데이터가 없는 경우
+        if (!data.mealServiceDietInfo || !data.mealServiceDietInfo[1] || !data.mealServiceDietInfo[1].row) {
+            return [];
         }
-
         // 급식 정보 파싱
         const mealInfo = data.mealServiceDietInfo[1].row[0];
+        if (!mealInfo || !mealInfo.DDISH_NM) return [];
         const dishes = mealInfo.DDISH_NM.split('<br/>');
         
         // 알레르기 정보 제거 및 정리
@@ -118,7 +125,12 @@ async function fetchAndDisplayMenu() {
         </div>
     `;
 
-    const menuItems = await fetchMealInfo(selectedDate);
+    let menuItems = [];
+    try {
+        menuItems = await fetchMealInfo(selectedDate);
+    } catch (e) {
+        console.error('fetchMealInfo error:', e);
+    }
     displayMenu(menuItems);
 }
 
@@ -129,11 +141,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 날짜 선택 이벤트
     const datePicker = document.getElementById('datePicker');
-    datePicker.addEventListener('change', (e) => {
-        selectedDate = new Date(e.target.value);
-        updateDateDisplay();
-        fetchAndDisplayMenu();
-    });
+    if (datePicker) {
+        datePicker.value = formatDateForInput(selectedDate);
+        datePicker.addEventListener('change', (e) => {
+            if (e.target.value) {
+                selectedDate = new Date(e.target.value);
+            } else {
+                selectedDate = new Date();
+            }
+            updateDateDisplay();
+            fetchAndDisplayMenu();
+        });
+    }
 
     // 초기 급식 정보 로드
     fetchAndDisplayMenu();
