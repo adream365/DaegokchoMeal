@@ -17,9 +17,14 @@
 <body class="bg-light">
     <div class="container py-4">
         <div class="card shadow-sm card-with-logo">
-            <img src="Picture/양파 로고.png" alt="로고" class="corner-logo">
+            <!-- 카드 바깥의 로고 이미지는 삭제 -->
             <div class="card-body">
                 <div class="text-center mb-4">
+                    <div class="logo-row mb-2">
+                        <img src="Picture/양파 로고.png" alt="로고" class="corner-logo mx-1">
+                        <img src="Picture/양파 로고.png" alt="로고" class="corner-logo mx-1">
+                        <img src="Picture/양파 로고.png" alt="로고" class="corner-logo mx-1">
+                    </div>
                     <h1 class="display-6 mb-3">서울대곡초등학교 급식 메뉴</h1>
                     <div class="date-selector mb-3">
                         <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
@@ -54,8 +59,8 @@
             </div>
         </div>
         
-        <div class="text-center my-3">
-            <a href="https://library.gangnam.go.kr/dchlib/index.do" target="_blank" rel="noopener noreferrer" class="library-link">대치도서관(위치:은마아파트상가2층) : 열람실 자리 맡을때 로그인 용, 도서예약 용</a>
+        <div class="text-start my-3">
+            <a href="https://library.gangnam.go.kr/dchlib/index.do" target="_blank" rel="noopener noreferrer" class="library-link">대치도서관(은마상가2층) 홈페이지 링크</a>
         </div>
         <div class="info-table-wrap">
             <table class="info-table">
@@ -63,7 +68,7 @@
                     <tr>
                         <th>매장명</th>
                         <th>휴무</th>
-                        <th>이번주 일요일</th>
+                        <th id="sunday-header">이번주 일요일()</th>
                         <th>영업시간</th>
                     </tr>
                 </thead>
@@ -73,6 +78,8 @@
                     const today = new Date();
                     const sunday = new Date(today);
                     sunday.setDate(today.getDate() + (7 - today.getDay()) % 7);
+                    // MM/DD 포맷
+                    const sundayMMDD = `${String(sunday.getMonth() + 1).padStart(2, '0')}/${String(sunday.getDate()).padStart(2, '0')}`;
                     // 이번달 몇번째 일요일인지 계산
                     const sundayDate = sunday.getDate();
                     const sundayWeek = Math.ceil(sundayDate / 7);
@@ -84,9 +91,11 @@
                         }
                         return '영업';
                     }
+                    // 헤더에 MM/DD 날짜 넣기
+                    document.getElementById('sunday-header').textContent = `이번주 일요일(${sundayMMDD})`;
                     document.write(`
                     <tr>
-                        <td>에브리데이(은마아파트)</td>
+                        <td>이마트에브리데이(은마아파트)</td>
                         <td>2,4번째 일요일 휴무</td>
                         <td>${getSundayStatus('2,4번째 일요일 휴무')}</td>
                         <td>10:00~23:00</td>
@@ -98,15 +107,15 @@
                         <td>대략 8:00~22:00</td>
                     </tr>
                     <tr>
-                        <td>하나로마트(미도아파트)</td>
+                        <td>농협하나로마트(미도아파트)</td>
                         <td></td>
                         <td>영업</td>
                         <td>8:30~21:00</td>
                     </tr>
                     <tr>
-                        <td>이마트(역삼정)</td>
-                        <td>2,4번째 일요일 휴무</td>
-                        <td>${getSundayStatus('2,4번째 일요일 휴무')}</td>
+                        <td>이마트(역삼점)</td>
+                        <td>2,4번째 일요일</td>
+                        <td>${getSundayStatus('2,4번째 일요일')}</td>
                         <td>10:00~23:00</td>
                     </tr>
                     `);

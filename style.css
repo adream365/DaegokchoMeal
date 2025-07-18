@@ -290,7 +290,7 @@ footer {
 }
 
 .schedule-img {
-    max-width: 70%;
+    max-width: 90%;
     height: auto;
     border-radius: 16px;
     box-shadow: 0 4px 24px rgba(120, 200, 120, 0.13);
@@ -336,21 +336,21 @@ a.library-link:focus {
     position: relative;
 }
 .corner-logo {
-    position: absolute;
-    top: 1.2rem;
-    left: 1.2rem;
+    position: static;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     height: 120px;
     width: auto;
     z-index: 10;
     border-radius: 50%;
-    background: #fff;
     box-shadow: 0 2px 8px rgba(120,200,120,0.08);
 }
 @media (max-width: 576px) {
     .corner-logo {
         top: 0.5rem;
         left: 0.5rem;
-        height: 76px;
+        height: 60px;
     }
 }
 
@@ -439,5 +439,25 @@ a.library-link:focus {
     }
     .library-link {
         font-size: 1.05rem !important;
+    }
+}
+
+.logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+}
+.corner-logo {
+    height: 120px;
+    width: auto;
+    display: block;
+}
+@media (max-width: 576px) {
+    .corner-logo {
+        height: 60px;
+    }
+    .logo-row {
+        gap: 0.5rem;
     }
 }
