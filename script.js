@@ -1,6 +1,34 @@
 // 현재 선택된 날짜
 let selectedDate = new Date();
 
+// 매일 순서대로 나타나는 문구 배열
+const dailyQuotes = [
+    "너~무 작은 아이에게 너무 많~은 것을 기대하지 말자.",
+    "평생 전쟁을 해야 한다. 한 번의 전쟁에서 지더라도 그 전쟁에 모든 것을 걸 수는 없다.",
+    "아이에게 아침의 여유로움과 즐거움을 알게 해주기.",
+    "일찍 잠들기, 절대 짜증내지 않기.",
+    "기분 좋은 음악과 목소리를 들으며 잠에서 깰 수 있는 환경 마련하기.",
+    "그 자리에서 말하지 말고, 다음 번 조용히 대화하는 시간에 말하기.",
+    "부모님께 일주일에 한 번 전화하기.",
+    "아이에게 그 정도로 화내고 짜증낼 건 아니다. 그럴만한 일은 세상에 존재하지 않는다.",
+    "흘러흘러 나비의 날갯짓, 나의 날갯짓… 책임의 끝이 파멸의 시작이 아닐까.",
+    "아이에게 줄 수 있는 가장 큰 선물은 웃음이 아닐까? 세상을 행복하게 바라볼 수 있는 힘을 키워주는 건 엄마 아빠의 행복한 웃음.",
+    "사람들이 가장 위로를 받을 때는 나와 같은 처지에 있는 사람들이 있다는 것을 알 때, 그리고 그 일에 대해 공감하며 이야기를 나눌 때가 아닐까."
+];
+
+// 매일 문구 표시 함수
+function displayDailyQuote() {
+    const quoteElement = document.getElementById('daily-quote');
+    if (!quoteElement) return;
+    
+    // 오늘 날짜를 기준으로 문구 선택 (0부터 시작하는 인덱스)
+    const today = new Date();
+    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+    const quoteIndex = dayOfYear % dailyQuotes.length;
+    
+    quoteElement.textContent = dailyQuotes[quoteIndex];
+}
+
 // 날짜 표시 업데이트
 function updateDateDisplay() {
     // 날짜가 유효하지 않으면 오늘로 대체
@@ -138,6 +166,9 @@ async function fetchAndDisplayMenu() {
 document.addEventListener('DOMContentLoaded', () => {
     // 초기 날짜 표시
     updateDateDisplay();
+    
+    // 매일 문구 표시
+    displayDailyQuote();
     
     // 날짜 선택 이벤트
     const datePicker = document.getElementById('datePicker');
